@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 @RestController
 @RequestMapping("/currencies")
@@ -28,14 +27,14 @@ public class CurrencyController {
         return currencyService.createCurrency(currency);
     }
 
-    @GetMapping("/minprice/{currency}")
-    public Currency getCurrencyWithMinPrice(@PathVariable CurrencyName currency) {
-        return currencyService.getCurrencyWithMinPrice(currency);
+    @GetMapping("/minprice")
+    public Currency getCurrencyWithMinPrice(@RequestParam CurrencyName name) {
+        return currencyService.getCurrencyWithMinPrice(name);
     }
 
-    @GetMapping("/maxprice/{currency}")
-    public Currency getCurrencyWithMaxPrice(@PathVariable CurrencyName currency) {
-        return currencyService.getCurrencyWithMaxPrice(currency);
+    @GetMapping("/maxprice")
+    public Currency getCurrencyWithMaxPrice(@RequestParam CurrencyName name) {
+        return currencyService.getCurrencyWithMaxPrice(name);
     }
 
     @GetMapping()
